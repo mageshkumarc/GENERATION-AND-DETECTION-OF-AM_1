@@ -83,7 +83,57 @@ Note: Keep all the switch faults in off position
 <img width="600" height="800" alt="image" src="https://github.com/user-attachments/assets/7bc77926-9c2a-42c6-994b-6c67433b11d2" />
 
 ## PROGRAM:
- 
+ ```
+am = 8.6;
+fm = 843;
+fs = 843000;
+pi = %pi;
+t = 0:1/fs:2/fm;
+m = am * cos(2 * pi * fm * t);
+ac = 17.6;
+fc = 8630;
+c = cos(2 * pi * fc * t);
+modulated = (ac + m) .* c;
+
+demod_raw = modulated .* c;
+N = length(demod_raw);
+M = fft(demod_raw);
+f = (0:N-1)*(fs/N);
+
+cutoff = 2 * fm;
+H = (f < cutoff);
+M_filtered = M .* H;
+demodulated = real(ifft(M_filtered));
+
+avg = sum(demodulated) / length(demodulated);
+demodulated = demodulated - avg;
+demodulated = demodulated / max(abs(demodulated));
+demodulated = demodulated * max(abs(m));
+
+subplot(4,1,1);
+plot(t, m);
+title('Message Signal');
+xlabel('Time (s)');
+ylabel('Amplitude');
+
+subplot(4,1,2);
+plot(t, c);
+title('Carrier Signal');
+xlabel('Time (s)');
+ylabel('Amplitude');
+
+subplot(4,1,3);
+plot(t, modulated);
+title('AM Modulated Signal');
+xlabel('Time (s)');
+ylabel('Amplitude');
+
+subplot(4,1,4);
+plot(t, demodulated);
+title('Demodulated Signal');
+xlabel('Time (s)');
+ylabel('Amplitude');
+```
 ## TABULATION:
 
 ## CALCULATION:
