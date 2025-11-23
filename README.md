@@ -135,11 +135,15 @@ xlabel('Time (s)');
 ylabel('Amplitude');
 ```
 ## TABULATION:
+![WhatsApp Image 2025-11-23 at 11 12 38_a31c008e](https://github.com/user-attachments/assets/a681b33d-9efb-4575-b5cb-86b9f8791e76)
 
 ## CALCULATION:
+![WhatsApp Image 2025-11-23 at 11 12 38_8a5e41ba](https://github.com/user-attachments/assets/916b3a7d-aac3-49d0-a427-d2aeef8d39af)
 
 
 
 ## OUTPUT:
+<img width="1645" height="1014" alt="AC EXP1" src="https://github.com/user-attachments/assets/e1fb639f-95b0-47a4-8089-a719b8659bf3" />
 
 ## RESULT:
+Thus the amplitude modulation and demodulation is experimentally done and the output is verified.
